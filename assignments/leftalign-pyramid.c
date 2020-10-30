@@ -1,5 +1,4 @@
-# include <stdio.h>
-# include <cs50.h>
+
 
 // ask user how tall the pyramid should be and create the pyramid
 //do while loop required >0 and <9

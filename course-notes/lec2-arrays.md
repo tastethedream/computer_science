@@ -111,6 +111,49 @@ float average(int length, int array[])
 }
 ```
 
+`\0` null terminating character indicates the end of a string
+
+> print a string character by character
+
+```
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("input: ");
+    printf("output: ");
+    for (int i = 0; n = strlen(s); i < n; i++)
+    {
+        printf("%c, s[i]);
+    }
+    printf("\n");
+}
+```
+> Change string to uppercase
+
+```
+// Uppercases string using ctype library
+
+#include <cs50.h>
+#include <ctype.h> // library that contains `toupper` 
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After:  ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        printf("%c", toupper(s[i]));
+    }
+    printf("\n");
+}
+```
+
+
+
+
 
 
 
