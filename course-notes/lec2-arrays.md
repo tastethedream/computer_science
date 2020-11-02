@@ -151,6 +151,77 @@ int main(void)
 }
 ```
 
+### int main(int argc, string argv[])
+
+Int main takes 2 conditions
+
+#### int argc
+
+> argc - argument count
+> the length of the array???
+
+#### string argv[]
+
+> argv - argument vector
+
+> an array of strings 
+
+```
+// Printing a command-line argument
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+    if (argc == 2)
+    {
+        printf("hello, %s\n", argv[1]);
+    }
+    else
+    {
+        printf("hello, world\n");
+    }
+}
+```
+
+`main` has a default return value of 0 and it indicates all is well.
+
+```
+// Returns explicit value from main
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+    if (argc != 2)
+    {
+        printf("missing command-line argument\n");
+        return 1;
+    }
+    printf("hello, %s\n", argv[1]);
+    return 0;
+}
+```
+Returning 1 here indicates that something went wrong
+
+
+## Shorts for week 2
+
+## Functions
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
