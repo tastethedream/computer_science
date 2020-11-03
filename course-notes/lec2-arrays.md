@@ -207,9 +207,6 @@ int main(int argc, string argv[])
 Returning 1 here indicates that something went wrong
 
 
-## Shorts for week 2
-
-## Functions
 
 
 
