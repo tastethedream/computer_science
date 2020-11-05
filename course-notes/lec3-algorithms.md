@@ -85,7 +85,7 @@ int main(void)
 
 
  ```
- include <string.h>
+ #include <string.h>
 
 int main(void)
 {
@@ -127,6 +127,28 @@ int main(void)
 ```
 
 will return the number with the same index as emma but only by assuming that emmas number is the first number like emma is the first name. This is not realistic.
+
+### Binary search
+
+Divide and conquer, only works if the array is already sorted
+
+>Repeat until the (sub)array is size 0
+    >calculate the middle point of the sub array
+    >if target is at the middle...stop
+    >Otherwise, if target is less than whats is in the middle, repeat to the left
+    >Otherwise if the target is greater than whats in the middle repeat to the right
+
+
+ If the target is not in the array....the start point will end up being greater than the end point and give you a sub array of 0 and proves the element does not exist in the array.
+
+ **Worst-case**
+ We have to divide the list of n elements in half repeatedly to fund the target either because the target will be found in the last sub array or does not exist `Ο(log n)`
+
+ **Best case** 
+ The target is at the midpoint of the original array so we can stop `Ω(1)`
+
+ This search is more efficient than a linear search but can only be used when the array is sorted.
+
 
 ### typedef struct
 
@@ -177,6 +199,8 @@ will return emmas number
 
 ### Bubble sort
 
+In bubble sort the idea of the algorithm is to move higher valued elements towards the right and lower values towards the left
+
 > repeat n - 1 times 
     >for i from 0 to n -2
         >if i'th and i+1th elements out of order
@@ -184,9 +208,16 @@ will return emmas number
 
 keep swapping the order of adjacent elements until the elements are in sequence 
 
-repeat until no swaps
+repeat until no swaps (swap counter is 0)
 
 keep doing it until there are no numbers left to swap, then stop
+
+ **Worst-case**
+The array is in reverse order, we have to bubble each of the n elements all the way across the array and since we can only fully bubbble one element into position per pass, we must do this n times `Ο(n²)`
+
+ **Best case** 
+ The array is already sorted and we make no swaps on the first pass so we can stop `Ω(n)`
+
 
 ### Selection sort
 
@@ -196,11 +227,95 @@ looks for the the smallest number and remembers that and shifts it to the start 
     >find smallest item between i'th item and last item
     >swap smallest item with i'th item
 
+**Worst-case**
+We have to iterate over each of the n elements of the array (to find the smallest) and must repeat the process n times, since only one element gets sorted on each pass `Ο(n²)`
+
+ **Best case** 
+ Exactly the same as there is no way to gaurentee the array is sorted until we go through the whole process `Ω(n²)`
+
 ## Recursion
 
-A program, function or algorithm that calls itself.
+A program, function or algorithm that **calls itself**.
 
-The follwoing example builds a Mario pyramid like pset1 using recursion
+Creates elegant code that is both interesting and easy to visualise
+
+The factorial function (n!) is defined over all poitive integers.
+
+n! equals all of the positive integers less than or equal to n, multiplied together
+
+Thinking in terms of programming, we will define the mathamatical function n! as fact(n)
+
+fact(1) = 1
+fact(2) = 2 * 1
+fact(3) = 3 * 2 * 1
+fact(4) = 4 * 3 * 2 * 1
+fact(5) = 5 * 4 * 3 * 2 * 1
+...
+
+
+fact(1) = 1
+fact(2) = 2 * fact(1)
+fact(3) = 3 * fact(2)
+fact(4) = 4 * fact(3)
+fact(5) = 5 * fact(4)
+
+fact(n) = n * fact(n-1)
+
+Every recursive function has two cases that could apply, given any input
+
+    - The *base case* which when triggered will terminate the recursive process
+    - The *recursive case*, which is where the recursion will actually occur
+
+    ```
+    int fact(int n)
+    {
+        if (n = 1) //base case
+        {
+            return 1;
+        }
+        else
+        {
+            return n * fact(n - 1); //recursive case
+        }
+    }
+    ```
+
+    In general, but not always a recursive function can replace a loop
+
+
+
+**multiple base cases**
+
+**Fibonacci** -
+    - first element is 0
+    - second element is 1
+    - the nth element is the sum of the (n-1)th and (n-2th) elements
+
+**Multiple recursive cases**
+
+**The Collatz conjecture**
+
+The Collatz conjecture is applied to positive integers and speculates that is is always possible to get back to 1 if you follow these steps
+
+    - If n is 1 stop
+    - Otherwise if n is even then repeat this process on n/2
+    - Otherwise if n is odd, repeat this process on 3n + 1
+
+```
+int collatz(int n)
+{
+    //base case
+    if (n == 1)
+        return 0;
+    //even numbers
+    else if ((n % 2) == 0)
+        return 1 + collatz(n/2);
+    odd numbers
+    else
+        return 1 + collatz(3 * n + 1)
+}
+```
+**- The following example builds a Mario pyramid like pset1 using recursion**
 
 ```
 #include <cs50.h>
@@ -229,10 +344,28 @@ void draw(int h)
     }
     printf("\n")
 }
-
 ```
 
+### Insertion sort
+
+In insertion sort, the idea of the algorith is to buils your sorted array in place, shifting elements out of the way if necessary to make room as you go
+
+> Call the first element of the array "sorted"
+    > Repeat until all elements are sorted
+        > Look at the next unsorted element, insert into the "sorted" position by shifting the requisite number of elements
+
+
+**Worst-case**
+The array is in reverse order and we have to shift each of the n elements n positions each time we make an insertion`Ο(n²)`
+
+**Best-case**
+
+ The array is perfectly sorted and we simply keep moving the line between "unsorted" and "sorted" as we examine each element`Ω(n)`
+
+
 ### Merge Sort
+
+The idea of the algorithm is is to sort smaller arrays and then combine them in sorted order, using recursion
 
 > If only one item
     >Return
@@ -241,4 +374,10 @@ void draw(int h)
     >sort right half of items
     >Merge sorted halves
 
-A process that divides again and again uses logarithm log(n) much more efficient
+A process that divides again and again uses logarithm log(n) and is much more efficient
+
+**Worst case**
+We have to split n elements up and recombine them, effectively doubling the sorted sub arrays as we build them. `Ο(n log n)`
+
+**Best-case**
+The array is already perfectly sorted but we have to split and recombine it back together `Ω(n log n)`
