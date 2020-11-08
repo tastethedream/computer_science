@@ -22,6 +22,8 @@ Makes mapping easier because a group of 4 binary digits has 16 different combina
  }
 ```
 
+## Pointers
+
 `&` is the **address of** operator and will give you the location in memory of things when used in conjunction with `%p`.
 
 The above code will give you location of 50. **A pointer**
@@ -79,7 +81,9 @@ int main(void)
 
 You cannot compare strings like integers are even if they are the same they have different addresses for the compare will be different.
 
-## malloc()
+## Dynamic Memory Allocation
+
+### malloc()
 
 Memory allocate, requires the number of bytes required passing in plus the null operator 
 
