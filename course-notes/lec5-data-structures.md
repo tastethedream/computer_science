@@ -175,6 +175,184 @@ int main(void)
 
 Similar to recursion, delete everything else and then delete me.
 
+```
+// Implements a list of numbers with linked list
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Represents a node
+typedef struct node
+{
+    int number;
+    struct node *next;
+}
+node;
+
+int main(void)
+{
+    // List of size 0
+    node *list = NULL;
+
+    // Add number to list
+    node *n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        return 1;
+    }
+    n->number = 1;
+    n->next = NULL;
+    list = n;
+
+    // Add number to list
+    n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        return 1;
+    }
+    n->number = 2;
+    n->next = NULL;
+    list->next = n;
+
+    // Add number to list
+    n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        return 1;
+    }
+    n->number = 3;
+    n->next = NULL;
+    list->next->next = n;
+
+    // Print list
+    for (node *tmp = list; tmp != NULL; tmp = tmp->next)
+    {
+        printf("%i\n", tmp->number);
+    }
+
+    // Free list
+    while (list != NULL)
+    {
+        node *tmp = list->next;
+        free(list);
+        list = tmp;
+    }
+}
+```
+### Trees
+
+ Unlike Arrays, Linked Lists, Stack and queues, which are linear data structures, trees are hierarchical data structures.
+
+#### Tree Vocabulary
+
+ The topmost node is called root of the tree. The elements that are directly under an element are called its children. The element directly above something is called its parent. For example, ‘a’ is a child of ‘f’, and ‘f’ is the parent of ‘a’. Finally, elements with no children are called leaves.
+
+#### Main applications of trees include:
+1. Manipulate hierarchical data.
+2. Make information easy to search (see tree traversal).
+3. Manipulate sorted lists of data.
+4. As a workflow for compositing digital images for visual effects.
+5. Router algorithms
+6. Form of a multi-stage decision-making.
+
+### Hash tables
+
+Is a combination of an array(random access ability) and linked lists(dynamism).
+
+If we define our hash table well
+    - Inserstion can start to tend toward O(1) - constant time
+    - Deletion cab start to tend towards O(1)
+    - Lookup can start to tend towrds O(1)
+
+> Collision - If you have a value you wish to put somewhere but there is already something in this location. This can be resolved with **linear probing** 
+
+#### Linear Probing
+
+- Try to place the data in the next consecutive element in the array
+
+- This is subject to a problem called **clustering**
+
+#### Resolving collisions: Chaining
+
+- Each element of the array can hold multiple peices of data, if each elelemt of the array is a pointer to the hread of a linked list, then multiple peices of data can yield the same hash code abd we can store it all.
+
+- We can eleiminate clustering by doing this
+
+- We know thart insertion and creation in linked lists is an O(1) operation
+
+- For lookup we only need to search through what we hope is a small list
+
+
+
+- You index into this type of array using a **hash function**
+
+> Hash function - decides which bucket to put the data in for example by the first character of the name (alphabetically)
+
+- A good hash function should:
+    - Use only the data being hashed
+    - Use all of the data being hashed
+    - Be deterministic
+    - Uniformly distribute data
+    - Generate very different hash codes for very similar data
+
+```
+unsigned int hash(char* str)
+{
+    int sum = 0;
+    for (int j = 0; str[j] != '\0'; j++)
+    {
+        sum += str[j];
+    }
+    return sum % HASH_MAX:
+}
+```
+As a rule you wouldn't write your own hash functions
+
+
+### Tries
+
+(Short for retreival) Uses more memory but gives actual constant time look up for names or words.
+
+- Tries combine structures and pointers together to store data in an interesting way
+
+- The data to be searched for in the trie is now a road map.
+    - If you can follow the map from begining to ens, the data exists in the trie
+    - If you can't, it doesn't
+
+- Unlike a hash table, there are no collisions and no twi pieces of data(unless they are identical) have the same path.
+
+> is a tree each of whose nodes is an array
+> you look at each letter of the name rather than just the first few as in the hash table.
+
+- Lets map key-value pairs where the keys are 4 digit years(yyyy) and the values are the names of universities founded in that year
+
+- In a trie, the paths for a central **root** node to a **leaf** node
+
+- each node on the path from root to leaf could have 10 pointers emanating from it, one for each digit.
+
+```
+typedef struct_trie
+{
+    char university[20];
+    struct_trie* paths[10];
+}
+trie;
+```
+
+
+### Queues
+
+A data structure (FIFO)
+
+> enqueue - get in line
+> dequeue - get out of line
+
+### Stacks
+
+A data structure (LIFO)
+
+> Push - add to the stack
+> Pop -  removing the top element in the stack
 
 
 
