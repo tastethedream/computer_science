@@ -1,10 +1,23 @@
-# Lecture 6 Python
+# Lecture 6 Python 3
 
 File naming convention **filename.py**
 
 To run is CS50 IDE `python filename.py`
 
+Python does not necesserily need to be compliled
+
 `print("Hello World")`
+
+## Variables
+
+- No type specifier
+- Declared by initialisation only
+
+`phrase = "This is CS50"`
+
+- You can use `""` or `''`
+
+- `#` for comments
 
 ## Print
 
@@ -19,11 +32,23 @@ print(f"Hello,  {answer}")
 ```
 - `f` - format string tells python not to print literally "Hello,  {answer}"
 
+`input()` - to collect user input at the command line
+
+
 ## Counters
 
 - `++` operator does not exixt in python use `counter += 1`
 
 ## Conditions
+
+- or  `if y > 43 or z == 56:`
+- and
+- if
+- else
+- elif  - else if 
+- True
+- False
+
 
 ```
 if x < y:
@@ -48,9 +73,10 @@ else:
     print("x is equal to y")
 ```
 
-`elif`  - else if
-
 ## Loops
+
+- while
+- for 
 
 ```
 while True:
@@ -81,6 +107,50 @@ for i in range(3):
 
 > `range` returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and stops before a specified number.
 
+## Lists [arrays]
+
+- Arrays in python are called lists
+
+- You can grow and shrink as you need
+
+### Declaring a list
+
+` nums = []`
+
+` nums = [1, 2, 3, 4]`
+
+`nums = [x for x in range(500)]` - list comprehension
+
+### Appending to a list
+
+- will append to the end of a list
+
+```
+nums [1, 2, 3, 4]
+nums.append(5)
+```
+
+### Inserting in a list
+
+- will insert to a specific location in the list
+
+```
+nums [1, 2, 3, 4]
+nums.insert(4, 5)
+```
+will place the number 5 in position 4
+
+### Add lists together
+
+- attach one list to the end of another list
+
+```
+nums = [1, 2, 3, 4]
+nums[len(nums):] = [5]
+```
+
+
+
 ## Data Types 
 
 - bool      bolean
@@ -92,6 +162,44 @@ for i in range(3):
 - tuple     sequence of immutable values
 - dict      collection of key/value pairs (hash table)
 - set       collection of unique values 
+
+### Tuples[]
+
+Tuples are ordered, immutable sets of data. They are good for associating collections of data (like a struct??) but where the values are unlikley to change.
+
+```
+presidents = [
+    ("George Wasington", 1789),
+    ("John Adams", 1797),
+    ("Thomas Jefferson", 1801),
+    ("James Maddison", 1809)
+]
+```
+
+- The tuple is iterable
+
+```
+for prez, year in presidents:
+    print("In {1}, {0} took office".format(prez, year))
+```
+
+### Dictionaries{}
+
+- Dictionaries (hash tables) are enclosed in {}
+
+```
+people = {
+    "EMMA": "617-555-0100",
+    "RODRIGO": "617-555-0101",
+    "BRIAN": "617-555-0102",
+    "DAVID": "617-555-0103"
+}
+```
+- Keys and values are seperated with a : and each pair is seperated with a comma.
+
+- `people["EMMA"] = "617-555-6000"` will amend the telehone number for emma
+
+- `print("Our boss" + name + "can be reached on" + number)`
 
 ### Python example - image bluring
 
@@ -157,6 +265,41 @@ print()
 
 ```
 
+## Objects
+
+- Python is an object-oriented programming language
+
+- An object is sort of analgous to C
+
+- C structures contain a number of fields which we maty also call properties
+
+- The properties themselves can never stand on their own
+
+- Objects, meanwhile have properties but also **methods** or functions that are inherent to the object, and mean nothing outside of it. You define the methods inside the object also
+
+- Thus, properties and methods don't ever stand on their own
+
+- `object.method()`
+
+- You can define a type of object using the `class` keyword in Python
+
+- Classes require an initialisation function **contructor** which sets the starting values of the properties of the object
+
+- In defining each method of an object, `self` should be it's first parameter, which stipulates on what object the method is called
+
+```
+class Student():
+
+    def __init__(self, name. id):
+        self.name = name
+        seld.id = id
+
+    def changeID(self, id):
+        self.id = id
+
+    def print(self):
+        print("{} - {}".format(self.name, self.id))    
+```
 ## Named arguements
 
 `print` can take an arguement `end` whose value can equal what ever you want it to
@@ -173,20 +316,6 @@ You can import `argv` and `exit` etc from a library `from sys import argv`
 
 `argc` does not exist but you vcan use the length of `argv`  eg.  `for i in range(len(argv)):`
 
-## Dictionaries
-
-- Dictionaries (hash tables) are enclosed in {}
-
-```
-people = {
-    "EMMA": "617-555-0100",
-    "RODRIGO": "617-555-0101",
-    "BRIAN": "617-555-0102",
-    "DAVID": "617-555-0103"
-}
-```
-- Keys and values are seperated with a : and each pair is seperated with a comma.
-
 ## Regular Expressions
 
 - .   any character
@@ -198,4 +327,12 @@ people = {
 
 
 Python regular expression library - `re`  `import re`
+
+## Python Syntax
+
+### Style
+
+- Good style is crucial in Python
+- Tabs and indentation actually matter and things will not work properly if you disregard this
+- No more curly braces to delineate blocks! only used for dictionaries
 
