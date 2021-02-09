@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+
+    <script>
+
+
+    document.addEventListener('DOMContentLoaded', function(){
+
+        // part one multiple choice question
+
+           let correct = document.querySelectorAll('.correct');
+                for (let i = 0; i < correct.length; i++) {
+                    correct[i].addEventListener('click', function () {
+                        correct[i].style.backgroundColor = 'green';
+                        document.querySelector('#outcome').innerHTML = 'CORRECT!'
+                    });
+                }
+
+                let incorrect = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener('click', function() {
+                        incorrect[i].style.backgroundColor = 'red';
+                        document.querySelector('#outcome').innerHTML = 'Incorrect!'
+                    });
+                }
+
+        // part two free choice question
+
+            document.querySelector('#confirm').addEventListener('click', function(){
+                let input = document.querySelector('input');
+                if (input.value === 'Paris') {
+                    input.style.backgroundColor = 'green';
+                    document.querySelector('#outcome2').innerHTML = 'Correct'
+                } else {
+                    input.style.backgroundColor = 'red';
+                    document.querySelector('#outcome2').innerHTML = 'Incorrect'
+                }
+
+            });
+
+
+        });
+      </script>
+
+
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+
+                <h3>
+                    What colour is the letter 'l' in the Google logo?
+                </h3>
+
+                <p id="outcome"></p>
+
+                <button type="button" class="incorrect">Red</button>
+                <button type="button" class="correct">Green</button>
+                <button type="button" class="incorrect">Yellow</button>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+
+                <h3>What is the capital of France?</h3>
+
+                <input type ="text"></input>
+                <button id="confirm">Submit your answer</button>
+
+                <p id="outcome2"></p>
+
+            </div>
+
+        </div>
+
+
+    </body>
+</html>
