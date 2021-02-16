@@ -1,0 +1,124 @@
+body {
+  background-image:  url("/img/sky.jpeg");
+  background-size: cover;
+  text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.intro {
+	margin: 30px 0px;
+	font-weight: bold;
+}
+
+h1 {
+	color: #161d6f;
+	text-transform: uppercase;
+	font-weight: bolder;
+  font-size: 80px;
+}
+
+p {
+	font-weight: 600;
+}
+
+#first {
+	margin-top: 10px;
+	color: #276678;
+}
+
+#second {
+	color: #276678;
+
+}
+
+#third {
+	color: #276678;
+	margin-bottom: 30px;
+}
+
+#userInput {
+  height: 30px;
+}
+
+
+
+#enter {
+	border: none;
+	padding: 5px 15px;
+	border-radius: 5px;
+	height: 30px;
+  color: #04A1BF;
+	background-color: #276678;
+  color: white;
+	transition: all 0.75s ease;
+	-webkit-transition: all 0.75s ease;
+	-moz-transition: all 0.75s ease;
+	-ms-transition: all 0.75s ease;
+	-o-transition: all 0.75 ease;
+	font-weight: normal;
+}
+
+#enter:hover{
+	background-color: #5EAAAB;
+	color: #FFCD5D;
+}
+
+ul {
+	text-align: left;
+	margin-top: 20px;
+}
+
+
+li {
+	list-style: none;
+	padding: 10px 20px;
+	color: #ffffff;
+	text-transform: capitalize;
+	font-weight: 600;
+	border: 2px solid #025f70;
+	border-radius: 5px;
+	margin-bottom: 10px;
+  max-width: 85%;
+	background: #62959C;
+	transition: all 0.75s ease;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-o-transition: all 0.5 ease;
+}
+
+li:hover {
+	background: #94B5C0;
+}
+
+li > button {
+	font-weight: normal;
+	background: none;
+	border: none;
+	float: right;
+	color: red;
+	font-weight: 800;
+}
+
+input {
+	border-radius: 5px;
+	min-width: 45%;
+	padding: 5px;
+	border: none;
+  min-width: 45%;
+
+}
+
+
+.done {
+	background: #161d6f !important;
+  min-width: 45%;
+  text-decoration: line-through; 
+
+}
+
+.delete {
+	display: none;
+}
+
+  
