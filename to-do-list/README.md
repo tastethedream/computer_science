@@ -1,7 +1,7 @@
 # CS50 Final Project
 ## Forget Me Not
 
--  Video Demo <url>
+-  Video Demo <https://youtu.be/idAXMPlIEFk>
 
 ### Description
 
